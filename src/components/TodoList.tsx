@@ -14,11 +14,14 @@ export const TodoList: React.FC = () => {
   const [pendingDelete, setPendingDelete] = React.useState<number | null>(null);
   const [editingIndex, setEditingIndex] = React.useState<number | null>(null);
   const [editingText, setEditingText] = React.useState('');
-
+ 
+  const noSpecialChar = /^[a-zA-Z0-9 ]*$/;
   const trimmedNew = newItem.trim();
-  const isAddEnabled = trimmedNew.length >= 3 && trimmedNew.length <= 25;
+  const isAddEnabled = trimmedNew.length >= 3 && trimmedNew.length <= 25 && noSpecialChar.test(trimmedNew);
   const validationError = trimmedNew.length > 0 && !isAddEnabled
-    ? trimmedNew.length < 3
+    ? !noSpecialChar.test(trimmedNew)
+      ? 'Special characters are not allowed.'
+      : trimmedNew.length < 3
       ? 'Minimum 3 characters required.'
       : 'Maximum 25 characters allowed.'
     : '';

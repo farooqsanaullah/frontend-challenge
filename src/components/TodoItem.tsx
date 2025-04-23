@@ -79,12 +79,12 @@ export const TodoItemComponent: React.FC<TodoItemProps> = ({
           className="w-5 h-5 text-green-500 cursor-pointer mr-2"
         />
       )}
-      <TrashIcon
-        onClick={onDelete}
-        className={`w-5 h-5 cursor-pointer ${
-          completed ? 'text-gray-300' : 'text-gray-400 hover:text-red-500'
-        }`}
-      />
+      {!isEditing && (
+        <TrashIcon
+          onClick={onDelete}
+          className="w-5 h-5 cursor-pointer text-red-400 hover:text-red-500"
+        />
+      )}
     </div>
   </motion.li>
 );
