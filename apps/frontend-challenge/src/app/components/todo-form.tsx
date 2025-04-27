@@ -22,8 +22,8 @@ export function TodoForm() {
       setTitleError("Title must be at least 3 characters")
       return false
     }
-    if (value.length > 50) {
-      setTitleError("Title must be less than 50 characters")
+    if (value.length > 25) {
+      setTitleError("Title must be less than 25 characters")
       return false
     }
     if (!/^[a-zA-Z0-9 ]+$/.test(value)) {
